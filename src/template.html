@@ -1,1 +1,111 @@
-<!-- change watchFiles in webpack config -->
+<!-- change watchFiles & template in webpack config -->
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Odin Weather</title>
+  </head>
+  <body>
+    <div id="nav">
+      <div id="search-bar">
+        <input type="search" placeholder="Search by city name..." />
+        <button>
+          <img src="resources/my-location.svg" alt="" /><span
+            aria-label="Use my location"
+          ></span>
+        </button>
+      </div>
+      <div id="unit">
+        <input type="radio" name="unit" value="celcius" id="celcius" checked />
+        <label for="celcius">&deg;C</label>
+        <input type="radio" name="unit" value="fahrenheit" id="fahrenheit" />
+        <label for="fahrenheit">&deg;F</label>
+      </div>
+    </div>
+    <div id="card">
+      <div id="overview">
+        <div id="icon">
+          <img
+            src="resources/clear-day.svg"
+            alt="Current weather symbolic icon"
+            width="108"
+            height="108"
+          />
+        </div>
+        <div id="temperature">
+          <p>
+            <span id="truetemp">23</span><span id="deg">&deg;</span> feels like
+            <span id="feelslike">25</span>&deg;
+          </p>
+          <p id="description">Rain, partially cloudy</p>
+        </div>
+        <div id="placetime">
+          <p id="place">Ho Chi Minh City</p>
+          <p id="date">5/9/2024</p>
+          <p id="time">4:36pm</p>
+        </div>
+      </div>
+      <div id="extraInfo">
+        <div id="humidity">
+          <p class="label">Humidity</p>
+          <p><span class="value">70</span>%</p>
+        </div>
+        <div id="precipprob">
+          <p class="label">Chance of Rain</p>
+          <p><span class="value">60</span>%</p>
+        </div>
+        <div id="uv-index">
+          <p class="label">UV Index</p>
+          <p>
+            <span class="value">1</span
+            ><img src="resources/info.svg" alt="Current UV Index info" />
+          </p>
+        </div>
+        <div id="wind-speed">
+          <p class="label">Wind speed</p>
+          <p><span class="value">16</span><span class="unit"> km/h</span></p>
+        </div>
+        <div id="cloud-cover">
+          <p class="label">Cloud coverage</p>
+          <p><span class="value">88</span>%</p>
+        </div>
+        <div id="pressure">
+          <p class="label">Pressure</p>
+          <p><span class="value">1006</span> mb</p>
+        </div>
+        <div id="sunrise">
+          <p class="label">Sunrise</p>
+          <p><span class="value">05:43</span></p>
+        </div>
+        <div id="sunset">
+          <p class="label">Sunset</p>
+          <p><span class="value">18:00</span></p>
+        </div>
+      </div>
+      <div class="forecast" id="hourly">
+        <p>Hourly forecast</p>
+        <div class="container">
+          <div class="index">
+            <p>Now</p>
+            <img src="resources/clear-day.svg" alt="" width="72" height="72" />
+            <p><span class="avg">31</span>&deg;</p>
+          </div>
+        </div>
+      </div>
+      <div class="forecast" id="daily">
+        <p>Daily forecast</p>
+        <div class="container">
+          <div class="index">
+            <p>Today</p>
+            <img src="resources/clear-day.svg" alt="" width="72" height="72" />
+            <p>
+              <span class="min">26</span><span class="min-deg">&deg;</span>
+              <span class="max">31</span><span class="max-deg">&deg;</span>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

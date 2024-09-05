@@ -1,0 +1,245 @@
+@font-face {
+  font-family: "Poppins Medium";
+  src: url("fonts/Poppins-Medium.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Poppins ExtraBold";
+  src: url("fonts/Poppins-ExtraBold.woff2") format("woff2");
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Poppins Bold";
+  src: url("fonts/Poppins-Bold.woff2") format("woff2");
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Poppins";
+  src: url("fonts/Poppins-Regular.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --page-bg: #f4fcf8;
+}
+
+body {
+  display: grid;
+  justify-items: center;
+  background-color: #f4fcf8;
+  font-family: "Poppins";
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+#nav {
+  display: flex;
+  gap: 16px;
+  width: 500px;
+
+  #search-bar {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid rgb(166, 166, 166);
+
+    input {
+      flex-grow: 1;
+      font-size: 100%;
+      font-family: inherit;
+      outline: none;
+      border: none;
+      background-color: inherit;
+    }
+
+    button {
+      background: none;
+      border: none;
+      display: grid;
+      place-items: center;
+    }
+  }
+
+  #unit {
+    display: flex;
+    background-color: rgb(216, 216, 216);
+    padding: 4px;
+    border-radius: 8px;
+
+    label {
+      display: grid;
+      font-family: "Poppins Bold";
+      place-items: center;
+      width: 20px;
+      padding: 6px 12px;
+      cursor: pointer;
+      border-radius: 8px;
+    }
+
+    input {
+      display: none;
+    }
+
+    input:checked + label {
+      background-color: white;
+      box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    }
+  }
+}
+
+#card {
+  margin: 30px 0px;
+  width: fit-content;
+  padding: 8px 0px 16px;
+  border: 1px solid rgb(166, 166, 166);
+  border-radius: 24px;
+
+  p {
+    margin: 0;
+  }
+
+  #overview {
+    display: grid;
+    grid-template-areas: "icon temparature placetime";
+    grid-template-columns: max-content 1fr max-content;
+    gap: 20px;
+    padding: 0px 24px;
+
+    #temperature {
+      padding-top: 8px;
+
+      #truetemp,
+      #deg {
+        font-family: "Poppins Bold";
+        font-size: 44px;
+      }
+    }
+
+    #placetime {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      justify-content: center;
+      gap: 4px;
+
+      #place {
+        font-family: "Poppins Bold";
+      }
+    }
+  }
+
+  #extraInfo {
+    margin-top: 24px;
+    display: grid;
+    grid-template-areas:
+      "humidity     precipprob  uv-index  wind-speed"
+      "cloud-cover  pressure    sunrise   sunset";
+    gap: 24px 40px;
+    border-bottom: 1px solid rgb(166, 166, 166);
+    padding: 0px 24px 24px;
+
+    .value {
+      font-family: "Poppins Medium";
+      font-size: 32px;
+      line-height: 100%;
+    }
+
+    #temperature {
+      grid-area: temperature;
+    }
+
+    #humidity {
+      grid-area: humidity;
+    }
+
+    #precipprob {
+      grid-area: precipprob;
+    }
+
+    #description {
+      grid-area: description;
+    }
+
+    #uv-index {
+      grid-area: uv-index;
+
+      img {
+        margin-left: 4px;
+      }
+    }
+
+    #wind-speed {
+      grid-area: wind-speed;
+    }
+
+    #cloud-cover {
+      grid-area: cloud-cover;
+    }
+
+    #pressure {
+      grid-area: pressure;
+    }
+
+    #sunrise {
+      grid-area: sunrise;
+    }
+
+    #sunset {
+      grid-area: sunset;
+    }
+  }
+
+  .forecast {
+    margin-top: 24px;
+    padding: 0px 24px;
+
+    & > p {
+      font-family: "Poppins Medium";
+      margin-bottom: 12px;
+    }
+
+    .container {
+      display: flex;
+      width: 550px;
+      overflow-x: auto;
+      gap: 8px;
+      padding-bottom: 12px;
+
+      .index {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        border: 1px solid rgb(166, 166, 166);
+        border-radius: 16px;
+        padding: 8px 16px;
+      }
+
+      .index:hover {
+        background-color: rgb(232, 232, 232);
+      }
+    }
+
+    .index {
+      span.max, span.max-deg {
+        color: red;
+      }
+
+      span.min, span.min-deg {
+        color: darkblue;
+      }
+    }
+  }
+}
