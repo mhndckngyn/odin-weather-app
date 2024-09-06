@@ -1,5 +1,5 @@
 import moment from "moment-timezone";
-import * as resources from "../resources/weatherIcon";
+import * as resources from "../resources/resourcesExport";
 
 const icons = {
   snow: resources.snow,

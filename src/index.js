@@ -3,12 +3,17 @@ import "./styles.css";
 import { fetchWeatherData } from "./utils/weatherAPI";
 import { showData } from "./utils/showData";
 import { setLocation, getCurrentLocation } from "./utils/currentLocation";
+import { createLoadingMessageContainer } from "./utils/createElement";
 
 function getCurrentUnit() {
   return document.querySelector("#unit input:checked").value;
 }
 
-function showLoadingMessage() {}
+function showLoadingMessage() {
+  const loadingMessageContainer = createLoadingMessageContainer();
+  document.querySelector("#nav").after(loadingMessageContainer);
+  return loadingMessageContainer; // return the container so it can be deleted later
+}
 
 function showErrorMessage() {
   // showErrorGif();
@@ -16,13 +21,14 @@ function showErrorMessage() {
 }
 
 async function getWeather(location = "Berlin") {
+  const loadingMessageContainer = showLoadingMessage();
   try {
-    showLoadingMessage();
     const data = await fetchWeatherData(location, getCurrentUnit());
     showData(data);
     setLocation(location);
     // save latlon to storage
   } catch (error) {
+    loadingMessageContainer.parentNode.removeChild(loadingMessageContainer);
     showErrorMessage();
   }
 }

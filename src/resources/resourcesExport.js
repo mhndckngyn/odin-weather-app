@@ -7,3 +7,5 @@ export { default as partlyCloudyDay } from "./partly-cloudy-day.svg";
 export { default as partlyCloudyNight } from "./partly-cloudy-night.svg";
 export { default as clearDay } from "./clear-day.svg";
 export { default as clearNight } from "./clear-night.svg";
+export { default as loading } from "./loading.gif";
+export { default as error } from "./error.gif";
