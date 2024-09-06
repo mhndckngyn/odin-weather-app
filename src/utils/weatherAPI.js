@@ -9,12 +9,11 @@ import {
 
 const KEY = "6C9F49DSKHDTNT7F67FAYS99J";
 
-export async function getWeatherInfo(location, unit = "metric") {
+export async function fetchWeatherData(location, unit) {
   const request = `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${location}/next7days?unitGroup=${unit}&key=${KEY}&contentType=json`;
-
+  
   try {
     const response = await fetch(request, { mode: "cors" });
-
     const json = await response.json();
     const data = getNecessaryDataFromJson(json);
     

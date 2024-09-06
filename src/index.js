@@ -1,30 +1,77 @@
 // change entry point in webpack config
 import "./styles.css";
-import { getWeatherInfo } from "./utils/weatherAPI";
+import { fetchWeatherData } from "./utils/weatherAPI";
 import { showData } from "./utils/showData";
+import { setLocation, getCurrentLocation } from "./utils/currentLocation";
+
+function getCurrentUnit() {
+  return document.querySelector("#unit input:checked").value;
+}
+
+function showLoadingMessage() {}
+
+function showErrorMessage() {
+  // showErrorGif();
+  // showErrorLabel();
+}
+
+async function getWeather(location = "Berlin") {
+  try {
+    showLoadingMessage();
+    const data = await fetchWeatherData(location, getCurrentUnit());
+    showData(data);
+    setLocation(location);
+    // save latlon to storage
+  } catch (error) {
+    showErrorMessage();
+  }
+}
+
+function searchLocation(event) {
+  if (event.key === "Enter") {
+    const location = event.target.value;
+    event.target.value = "";
+    if (location.length > 0) {
+      getWeather(location);
+    }
+  }
+}
+
+async function changeUnit() {
+  await getWeather(getCurrentLocation());
+
+  const windSpeedUnit = document.querySelector("#wind-speed .unit");
+  if (getCurrentUnit() === "metric") {
+    windSpeedUnit.textContent = "km/h";
+  } else {
+    windSpeedUnit.textContent = "mph";
+  }
+}
 
 function init() {
   const hourlyContainer = document.querySelector("#hourly .container");
   const hourlyIndex = hourlyContainer.querySelector(".index");
-
-  const dailyContainer = document.querySelector("#daily .container");
-  const dailyIndex = dailyContainer.querySelector(".index");
-
   while (hourlyContainer.childElementCount < 24) {
     hourlyContainer.appendChild(hourlyIndex.cloneNode(true));
   }
 
+  const dailyContainer = document.querySelector("#daily .container");
+  const dailyIndex = dailyContainer.querySelector(".index");
   while (dailyContainer.childElementCount < 8) {
     dailyContainer.appendChild(dailyIndex.cloneNode(true));
   }
 
-  getWeatherInfo("Dĩ An", getCurrentUnit())
-  .then((data) => showData(data))
-  .catch(() => showError());
+  const unitButtons = [
+    ...document.querySelectorAll("#unit input[type='radio']"),
+  ];
+  unitButtons.forEach((button) =>
+    button.addEventListener("change", changeUnit),
+  );
+
+  const searchBox = document.querySelector("#search-bar input");
+  searchBox.addEventListener("keydown", searchLocation);
+
+  getWeather();
 }
 
-init();
-
-function showError() {}
-
-function getCurrentUnit() {}
+window.addEventListener("load", init);

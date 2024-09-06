@@ -9,7 +9,7 @@
   <body>
     <div id="nav">
       <div id="search-bar">
-        <input type="search" placeholder="Search by city name..." />
+        <input type="search" placeholder="Search by location name..." />
         <button>
           <img src="resources/my-location.svg" alt="" /><span
             aria-label="Use my location"
@@ -17,12 +17,14 @@
         </button>
       </div>
       <div id="unit">
-        <input type="radio" name="unit" value="celcius" id="celcius" checked />
-        <label for="celcius">&deg;C</label>
-        <input type="radio" name="unit" value="fahrenheit" id="fahrenheit" />
-        <label for="fahrenheit">&deg;F</label>
+        <input type="radio" name="unit" value="metric" id="metric" checked />
+        <label for="metric" title="Unit: &deg;C, km/h">&deg;C</label>
+        <input type="radio" name="unit" value="us" id="us" />
+        <label for="us" title="Unit: &deg;F, mph">&deg;F</label>
       </div>
     </div>
+    <!-- <iframe src="https://giphy.com/embed/uqpK3SuxEY4W9YQvdg"" width="100" height="100" style="" frameBorder="0" class="giphy-embed" allowFullScreen></iframe> -->
+    <!-- <iframe src="https://giphy.com/embed/EP0jHSIAOQxK7omlea"" width="101" height="100" style="" frameBorder="0" class="giphy-embed" allowFullScreen></iframe> -->
     <div id="card">
       <div id="overview">
         <div id="icon">
