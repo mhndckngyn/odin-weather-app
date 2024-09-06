@@ -7,14 +7,6 @@
 }
 
 @font-face {
-  font-family: "Poppins ExtraBold";
-  src: url("fonts/Poppins-ExtraBold.woff2") format("woff2");
-  font-weight: bold;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
   font-family: "Poppins Bold";
   src: url("fonts/Poppins-Bold.woff2") format("woff2");
   font-weight: bold;
@@ -141,7 +133,7 @@ button:hover {
     }
   }
 
-  #extraInfo {
+  #extra-info {
     margin-top: 24px;
     display: grid;
     grid-template-areas:

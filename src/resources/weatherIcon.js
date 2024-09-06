@@ -1,0 +1,9 @@
+export { default as snow } from "./snow.svg";
+export { default as rain } from "./rain.svg";
+export { default as fog } from "./fog.svg";
+export { default as wind } from "./wind.svg";
+export { default as cloudy } from "./cloudy.svg";
+export { default as partlyCloudyDay } from "./partly-cloudy-day.svg";
+export { default as partlyCloudyNight } from "./partly-cloudy-night.svg";
+export { default as clearDay } from "./clear-day.svg";
+export { default as clearNight } from "./clear-night.svg";
