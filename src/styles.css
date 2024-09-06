@@ -23,13 +23,16 @@
 }
 
 :root {
-  --page-bg: #f4fcf8;
+  --page-bg: #212014;
+  --border: #434540;
+  --font: #e8e6e3;
 }
 
 body {
   display: grid;
   justify-items: center;
-  background-color: #f4fcf8;
+  color: var(--font);
+  background-color: var(--page-bg);
   font-family: "Poppins";
 }
 
@@ -46,7 +49,7 @@ button:hover {
     flex-grow: 1;
     display: flex;
     align-items: center;
-    border-bottom: 1px solid rgb(166, 166, 166);
+    border-bottom: 1px solid var(--border);
 
     input {
       flex-grow: 1;
@@ -55,6 +58,7 @@ button:hover {
       outline: none;
       border: none;
       background-color: inherit;
+      color: inherit;
     }
 
     button {
@@ -67,7 +71,7 @@ button:hover {
 
   #unit {
     display: flex;
-    background-color: rgb(216, 216, 216);
+    background-color: #3a3a3a;
     padding: 4px;
     border-radius: 8px;
 
@@ -86,8 +90,8 @@ button:hover {
     }
 
     input:checked + label {
-      background-color: white;
-      box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+      background-color: #e39f00;
+      color: #ffffff;
     }
   }
 }
@@ -96,7 +100,7 @@ button:hover {
   margin: 30px 0px;
   width: fit-content;
   padding: 8px 0px 16px;
-  border: 1px solid rgb(166, 166, 166);
+  border: 1px solid var(--border);
   border-radius: 24px;
 
   p {
@@ -140,8 +144,12 @@ button:hover {
       "humidity     precipprob  uv-index  wind-speed"
       "cloud-cover  pressure    sunrise   sunset";
     gap: 24px 40px;
-    border-bottom: 1px solid rgb(166, 166, 166);
+    border-bottom: 1px solid var(--border);
     padding: 0px 24px 24px;
+
+    .label {
+      color: #B0B0B0;
+    }
 
     .value {
       font-family: "Poppins Medium";
@@ -214,23 +222,25 @@ button:hover {
         display: flex;
         flex-direction: column;
         align-items: center;
-        border: 1px solid rgb(166, 166, 166);
+        border: 1px solid var(--border);
         border-radius: 16px;
         padding: 8px 16px;
       }
 
       .index:hover {
-        background-color: rgb(232, 232, 232);
+        background-color: rgb(88, 88, 88);
       }
     }
 
     .index {
-      span.max, span.max-deg {
-        color: red;
+      span.max,
+      span.max-deg {
+        color: #ff2525;
       }
 
-      span.min, span.min-deg {
-        color: darkblue;
+      span.min,
+      span.min-deg {
+        color: #8585ff;
       }
     }
   }

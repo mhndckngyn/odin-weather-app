@@ -18,7 +18,7 @@ function init() {
     dailyContainer.appendChild(dailyIndex.cloneNode(true));
   }
 
-  getWeatherInfo("Naypyidaw", getCurrentUnit())
+  getWeatherInfo("Dĩ An", getCurrentUnit())
   .then((data) => showData(data))
   .catch(() => showError());
 }
