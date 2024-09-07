@@ -1,7 +1,13 @@
+import { PubSub } from "./PubSub";
+
 let currentLocation;
 
-export function setLocation(location) {
+function setCurrentLocation(location) {
   currentLocation = location;
+}
+
+export function initSetLocation() {
+  PubSub.subscribe("locationSet", setCurrentLocation);
 }
 
 export function getCurrentLocation() {

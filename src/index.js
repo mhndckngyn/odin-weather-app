@@ -8,21 +8,27 @@
 import "./styles.css";
 import { fetchWeatherData } from "./utils/weatherAPI";
 import { showData } from "./utils/showData";
-import { setLocation, getCurrentLocation } from "./utils/currentLocation";
-import { showLoadingMessage, removeLoadingMessage } from "./utils/loadingMessage";
+import { initSetLocation, getCurrentLocation } from "./utils/currentLocation";
+import { initWebStorage } from "./utils/webStorage";
+import {
+  showLoadingMessage,
+  removeLoadingMessage,
+} from "./utils/loadingMessage";
 import { showErrorMessage, removeErrorMessage } from "./utils/errorMessage";
+import { PubSub } from "./utils/PubSub";
 
 function getCurrentUnit() {
   return document.querySelector("#unit input:checked").value;
 }
 
-async function getWeather(location = "Berlin") {
+async function getWeather(location) {
   showLoadingMessage();
   removeErrorMessage();
   try {
     const data = await fetchWeatherData(location, getCurrentUnit());
     showData(data);
-    setLocation(location);
+    console.log(location);
+    PubSub.publish("locationSet", location);
     removeLoadingMessage();
   } catch (error) {
     removeLoadingMessage();
@@ -84,7 +90,9 @@ function initUvTooltip() {
   const uvTooltip = document.getElementById("uv-message");
 
   uvImg.addEventListener("mouseover", () => uvTooltip.classList.add("active"));
-  uvImg.addEventListener("mouseleave", () => uvTooltip.classList.remove("active"));
+  uvImg.addEventListener("mouseleave", () =>
+    uvTooltip.classList.remove("active"),
+  );
 }
 
 function init() {
@@ -93,7 +101,14 @@ function init() {
   initSearchBox();
   initUvTooltip();
 
-  getWeather();
+  initSetLocation();
+
+  const prevLocation = initWebStorage();
+  if (prevLocation) {
+    getWeather(prevLocation);
+  } else {
+    getWeather("Hồ Chí Minh city");
+  }
 }
 
 window.addEventListener("load", init);
