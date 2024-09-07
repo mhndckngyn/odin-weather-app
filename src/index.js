@@ -1,4 +1,10 @@
-// change entry point in webpack config
+/* 
+  Icons used in this project are from the Meteocons icon pack.
+  Licensed under the MIT License.
+  Copyright (c) 2022 Bas Milius.
+  You may use and modify them as per the license.
+*/
+
 import "./styles.css";
 import { fetchWeatherData } from "./utils/weatherAPI";
 import { showData } from "./utils/showData";

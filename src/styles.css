@@ -28,12 +28,33 @@
   --font: #e8e6e3;
 }
 
+html, body {
+  height: 100%;
+}
+
 body {
-  display: grid;
-  justify-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   color: var(--font);
   background-color: var(--page-bg);
   font-family: "Poppins";
+}
+
+main {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+footer {
+  display: flex;
+  gap: 10px;
+
+  a {
+    color: #8585ff;
+  }
 }
 
 button:hover {
