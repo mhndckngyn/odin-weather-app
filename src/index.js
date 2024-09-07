@@ -51,7 +51,7 @@ async function changeUnit() {
   }
 }
 
-function init() {
+function initForecastContainers() {
   const hourlyContainer = document.querySelector("#hourly .container");
   const hourlyIndex = hourlyContainer.querySelector(".index");
   while (hourlyContainer.childElementCount < 24) {
@@ -63,16 +63,35 @@ function init() {
   while (dailyContainer.childElementCount < 8) {
     dailyContainer.appendChild(dailyIndex.cloneNode(true));
   }
+}
 
+function initUnitButtons() {
   const unitButtons = [
     ...document.querySelectorAll("#unit input[type='radio']"),
   ];
   unitButtons.forEach((button) =>
     button.addEventListener("change", changeUnit),
   );
+}
 
+function initSearchBox() {
   const searchBox = document.querySelector("#search-bar input");
   searchBox.addEventListener("keydown", searchLocation);
+}
+
+function initUvTooltip() {
+  const uvImg = document.querySelector("#uv-index img");
+  const uvTooltip = document.getElementById("uv-message");
+
+  uvImg.addEventListener("mouseover", () => uvTooltip.classList.add("active"));
+  uvImg.addEventListener("mouseleave", () => uvTooltip.classList.remove("active"));
+}
+
+function init() {
+  initForecastContainers();
+  initUnitButtons();
+  initSearchBox();
+  initUvTooltip();
 
   getWeather();
 }

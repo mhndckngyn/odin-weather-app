@@ -1,5 +1,6 @@
 import moment from "moment-timezone";
 import * as resources from "../resources/resourcesExport";
+import uvMessages from "./uvIndexMessage.json";
 
 const icons = {
   snow: resources.snow,
@@ -32,6 +33,7 @@ const cloudCoverage = extraInfo.querySelector("#cloud-cover .value");
 const pressure = extraInfo.querySelector("#pressure .value");
 const sunrise = extraInfo.querySelector("#sunrise .value");
 const sunset = extraInfo.querySelector("#sunset .value");
+const uvMessage = extraInfo.querySelector("#uv-message");
 
 const hourlyContainer = card.querySelector("#hourly .container");
 const dailyContainer = card.querySelector("#daily .container");
@@ -59,6 +61,15 @@ export function showData(data) {
   pressure.textContent = data.current.pressure;
   sunrise.textContent = data.current.sunrise;
   sunset.textContent = data.current.sunset;
+
+  const dataUv = data.current.uvIndex;
+  if (dataUv < 2) {
+    uvMessage.textContent = uvMessages.low;
+  } else if (dataUv < 7) {
+    uvMessage.textContent = uvMessages.moderate;
+  } else {
+    uvMessage.textContent = uvMessages.high;
+  }
 
   const hourlyElements = [...hourlyContainer.querySelectorAll(".index")];
   data.hours.forEach((hour, index) => {

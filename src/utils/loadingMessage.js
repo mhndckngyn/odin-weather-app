@@ -11,7 +11,6 @@ function createLoadingMessageContainer() {
       createElement("img", { width: 100, height: 100, src: loadingGif }),
     ],
   });
-  console.log(div);
   return div;
 }
 

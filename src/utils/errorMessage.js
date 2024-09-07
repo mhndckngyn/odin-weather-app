@@ -11,7 +11,6 @@ function createErrorMessageContainer() {
       createElement("img", { width: 100, height: 100, src: errorGif }),
     ],
   });
-  console.log(div);
   return div;
 }
 
